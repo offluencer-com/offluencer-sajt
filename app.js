@@ -175,8 +175,15 @@ window.addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY
 
 // ---- Contact form (FormSubmit AJAX, falls back to normal POST without JS) ----
 const form = document.getElementById("form"), formStatus = document.getElementById("form-status");
+// Timer starts when the form scrolls into view, not at page load
+let formOpened = Date.now();
+new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { formOpened = Date.now(); o.disconnect(); } }).observe(form);
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  // Bot traps: hidden honeypot filled, or sent faster than a person can type. Pretend success, send nothing.
+  if (form.elements._honey.value || Date.now() - formOpened < 4000) {
+    form.reset(); formStatus.textContent = t("ct.f.ok"); return;
+  }
   const btn = form.querySelector("button[type=submit]");
   btn.disabled = true; formStatus.textContent = t("ct.f.sending");
   try {

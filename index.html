@@ -123,7 +123,7 @@
         <input type="hidden" name="_template" value="table">
         <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
         <label><span data-i18n="ct.f.name">Ime i prezime</span><input name="ime" required autocomplete="name"></label>
-        <label><span data-i18n="ct.f.email">Email</span><input name="email" type="email" required autocomplete="email"></label>
+        <label><span data-i18n="ct.f.email">Email</span><input name="email" type="email" required autocomplete="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]{2,}"></label>
         <label><span data-i18n="ct.f.company">Firma (nije obavezno)</span><input name="firma" autocomplete="organization"></label>
         <label><span data-i18n="ct.f.msg">Poruka</span><textarea name="poruka" rows="4" required></textarea></label>
         <button class="btn btn-dark" type="submit" data-i18n="ct.f.send">Pošalji</button>
