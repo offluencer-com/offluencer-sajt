@@ -6,7 +6,7 @@
 const CONFIG = {
   instagram: null,        // e.g. "offluencer" once the account exists
   legalName: null,        // e.g. "Offluencer, Ime Prezime s.p." after registration
-  formEndpoint: "https://formsubmit.co/ajax/mail@offluencer.com"
+  formEndpoint: "https://formsubmit.co/ajax/460d194fc651a650545a951a882af58c"
 };
 
 // ---- Language ----
