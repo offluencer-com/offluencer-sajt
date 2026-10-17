@@ -728,16 +728,14 @@
 .w4 .track { height: 1cqw; border-radius: 99px; background: rgba(0,0,0,.1); overflow: hidden; margin-top: 1cqh; }
 .w4 .track i { display: block; height: 100%; background: #e63b2e; animation: progW 8s linear infinite; transform-origin: left; }
 
-/* ---------- reduced motion: show final states ---------- */
+/* ---------- reduced motion: designs stay still until hovered, focused or tapped (.svira) ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .res .ln, .rb .w, .bl .m, .rk .glass path, .res .kpi path { stroke-dashoffset: 0 !important; }
-  .res .b-col .bar, .stars svg, .bk > div, .rv2 .m, .rb text, .bl .g, .bl text, .rf .center b:first-child, .rm .cap:first-child { opacity: 1 !important; transform: none !important; }
-  .res .ba-bars div, .rv3 .dist i::after { transform: none !important; }
-  .rk .num { --n: 312; } .res .gauge .val b { --n: 82; } .res .gauge .fg { stroke-dashoffset: 18; }
+  .card:not(:hover, :focus-within, .svira) :is(.d, .d *, .d *::before, .d *::after, .d::before, .d::after) { animation-play-state: paused !important; }
+  /* while still, show a meaningful frame instead of the empty first one */
+  .card:not(:hover, :focus-within, .svira) :is(.res .ln, .rb .w, .bl .m, .rk .glass path, .res .kpi path) { stroke-dashoffset: 0 !important; }
+  .card:not(:hover, :focus-within, .svira) :is(.res .b-col .bar, .stars svg, .bk > div, .rv2 .m, .rb text, .bl .g, .bl text, .rf .center b:first-child, .rm .cap:first-child, .res .pt-b i) { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .card:not(:hover, :focus-within, .svira) :is(.res .ba-bars div, .rv3 .dist i::after) { transform: none !important; }
+  .card:not(:hover, :focus-within, .svira) .rk .num { --n: 312 !important; }
+  .card:not(:hover, :focus-within, .svira) .res .gauge .val b { --n: 82 !important; }
+  .card:not(:hover, :focus-within, .svira) .res .gauge .fg { stroke-dashoffset: 18 !important; }
 }
-
-.res .cs-list { list-style: none; margin-top: 4cqh; display: grid; gap: 1.6cqh; font-size: 3.6cqw; font-weight: 600; }
-.res .cs-list li { display: flex; gap: 2.4cqw; align-items: center; }
-.res .cs-list li::before { content: ""; width: 2.4cqw; height: 2.4cqw; background: #111; transform: rotate(45deg); flex: none; }
-.res .cs-list .h { font-family: var(--f-mono); font-size: 3cqw; letter-spacing: .12em; }
-.res .cs-list .h::before { display: none; }

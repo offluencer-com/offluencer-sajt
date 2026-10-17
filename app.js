@@ -133,6 +133,8 @@ window.addEventListener("pointerup", () => {
     rail.scrollTo({ left: Math.round(rail.scrollLeft / w) * w, behavior: "smooth" });
   }
 });
+// Tap a card to play/pause it (matters when the device asks for reduced motion)
+rail.addEventListener("click", (e) => { const c = e.target.closest(".card"); if (c && !e.target.closest("[data-tip]")) c.classList.toggle("svira"); });
 rail.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") { e.preventDefault(); next.click(); }
   if (e.key === "ArrowLeft") { e.preventDefault(); prev.click(); }
